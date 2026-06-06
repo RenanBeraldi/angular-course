@@ -44,17 +44,22 @@ export class ProductsGrid {
         const term = this.searchTerm().toLocaleLowerCase().trim();
         if (!term) return this.products();
 
-        return this.products().filter((product) =>
-            product.name.toLocaleLowerCase().includes(term) ||
-            product.description.toLocaleLowerCase().includes(term),
+        return this.products().filter(
+            (product) =>
+                product.name.toLocaleLowerCase().includes(term) ||
+                product.description.toLocaleLowerCase().includes(term),
         );
     });
 
-    protected clearSearch(): void {
-        this.searchTerm.set("");
+    protected onAddToCart(product: Product) {
+        console.log("Added to cart:", product.name);
     }
 
-    protected trimSearch(): void {
-        this.searchTerm.update((value) => value.trim());
-    }
+    // protected clearSearch(): void {
+    //     this.searchTerm.set("");
+    // }
+
+    // protected trimSearch(): void {
+    //     this.searchTerm.update((value) => value.trim());
+    // }
 }
